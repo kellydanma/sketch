@@ -1,3 +1,13 @@
+h1 {
+  font-family: "East Sea Dokdo", cursive;
+  font-size: 3em;
+  text-align: center;
+}
+
+p {
+  font-family: "Abel", sans-serif;
+}
+
 .outer {
   display: table;
   position: absolute;
@@ -14,7 +24,7 @@
 
 .inner {
   background-color: bisque;
-  padding: 10px 10px 10px 10px;
+  padding: 0px 10px 0px 10px;
   margin-left: auto;
   margin-right: auto;
   width: 40vw;
@@ -24,5 +34,5 @@
   display: grid;
   grid-template-columns: repeat(10, auto);
   grid-template-rows: repeat(10, auto);
-  padding: 10px 10px 10px 10px;
+  padding: 0px 10px 10px 10px;
 }
