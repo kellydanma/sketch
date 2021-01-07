@@ -27,7 +27,7 @@ button {
 }
 
 .inner {
-  background-color: bisque;
+  background-color: hsl(178, 100%, 94%);
   padding: 0px 10px 10px 10px;
   margin-left: auto;
   margin-right: auto;

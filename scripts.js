@@ -1,52 +1,49 @@
 const removeElements = (nodes) => [...nodes].forEach((n) => n.remove());
 
-const defaultContainer = createContainer(10);
+const defaultContainer = createContainer(50);
 const dropdown = (document.getElementById("nrgrid").onchange = handleDropdown);
 const resetButton = (document.querySelector("button").onclick = handleReset);
 
 function handleDropdown() {
-  const nrgrid = this.value;
+  const nrgrid = this.value * 10;
   console.log(`Displaying an ${nrgrid} by ${nrgrid} canvas.`);
   createContainer(nrgrid);
 }
 
 function handleReset() {
-  console.log(`Resetting to a 10 by 10 canvas.`);
-  createContainer(10);
+  console.log(`Resetting to a 50 by 50 canvas.`);
+  createContainer(50);
 }
 
 function handleHover() {
   const grids = document.getElementsByClassName("grid");
   Array.from(grids).forEach((grid) => {
     grid.addEventListener(
-      "mouseover",
+      "mouseenter",
       function (event) {
-        const colour = grid.style.backgroundColor;
-        event.target.style.backgroundColor = "orange";
-
-        // Reset the color after a 500ms delay.
-        setTimeout(function () {
-          event.target.style.backgroundColor = colour;
-        }, 500);
+        const colour = grid.getAttribute("light");
+        event.target.style.backgroundColor = darken(colour);
       },
       false
     );
+    grid.addEventListener("mouseleave", function (event) {}, false);
   });
+}
+
+function deleteContainerElements() {
+  const container = document.querySelector(".container");
+  removeElements(container.childNodes);
 }
 
 function createGrid(id, container, width) {
   const grid = document.createElement("div");
   grid.className = "grid";
   grid.id = id.toString();
-  grid.style.backgroundColor = "black";
+  grid.style.backgroundColor = "hsl(37, 100%, 100%)";
   grid.style.width = width;
   grid.style.height = width;
+  grid.setAttribute("light", "100");
   container.appendChild(grid);
-}
-
-function deleteContainerElements() {
-  const container = document.querySelector(".container");
-  removeElements(container.childNodes);
 }
 
 function createContainer(nrGrid) {
@@ -57,4 +54,8 @@ function createContainer(nrGrid) {
     createGrid(i, container, width);
   }
   handleHover();
+}
+
+function darken(colour) {
+  return `hsl(37, 100%, ${Math.max(colour - 20, 0)}%)`;
 }
