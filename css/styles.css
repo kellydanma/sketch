@@ -8,6 +8,10 @@ p {
   font-family: "Abel", sans-serif;
 }
 
+button {
+  margin-left: 30px;
+}
+
 .outer {
   display: table;
   position: absolute;
@@ -24,15 +28,21 @@ p {
 
 .inner {
   background-color: bisque;
-  padding: 0px 10px 0px 10px;
+  padding: 0px 10px 10px 10px;
   margin-left: auto;
   margin-right: auto;
-  width: 40vw;
+  width: 620px;
 }
 
 .container {
-  display: grid;
-  grid-template-columns: repeat(10, auto);
-  grid-template-rows: repeat(10, auto);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   padding: 0px 10px 10px 10px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

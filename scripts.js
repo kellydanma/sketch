@@ -1,19 +1,5 @@
-function createGrid(id, container, width) {
-  const grid = document.createElement("div");
-  grid.className = "grid";
-  grid.id = id.toString();
-  grid.style.backgroundColor = "black";
-  grid.style.height = width;
-  container.appendChild(grid);
-}
-
-function createContainer() {
-  const container = document.querySelector(".container");
-  const width = ((container.offsetWidth - 20) / 10).toString() + "px";
-  for (let i = 0; i < 100; i++) {
-    createGrid(i, container, width);
-  }
-}
+const dropdown = (document.getElementById("nrgrid").onchange = handleDropdown);
+const removeElements = (nodes) => [...nodes].forEach((n) => n.remove());
 
 function handleHover() {
   const grids = document.getElementsByClassName("grid");
@@ -34,5 +20,35 @@ function handleHover() {
   });
 }
 
-createContainer();
-handleHover();
+function createGrid(id, container, width) {
+  const grid = document.createElement("div");
+  grid.className = "grid";
+  grid.id = id.toString();
+  grid.style.backgroundColor = "black";
+  grid.style.width = width;
+  grid.style.height = width;
+  container.appendChild(grid);
+}
+
+function deleteContainerElements() {
+  const container = document.querySelector(".container");
+  removeElements(container.childNodes);
+}
+
+function createContainer(nrGrid) {
+  deleteContainerElements();
+  const container = document.querySelector(".container");
+  const width = ((container.offsetWidth - 20) / nrGrid).toString() + "px";
+  for (let i = 0; i < nrGrid ** 2; i++) {
+    createGrid(i, container, width);
+  }
+  handleHover();
+}
+
+function handleDropdown() {
+  const nrgrid = this.value;
+  console.log(`Displaying an ${nrgrid} by ${nrgrid} canvas.`);
+  createContainer(nrgrid);
+}
+
+createContainer(10);
