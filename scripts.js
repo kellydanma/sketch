@@ -1,3 +1,4 @@
+const dropdown = (document.getElementById("nrgrid").onchange = handleDropdown);
 const removeElements = (nodes) => [...nodes].forEach((n) => n.remove());
 
 function handleHover() {
@@ -44,10 +45,10 @@ function createContainer(nrGrid) {
   handleHover();
 }
 
-function myfunc() {
-  console.log("hello");
+function handleDropdown() {
+  const nrgrid = this.value;
+  console.log(`Displaying an ${nrgrid} by ${nrgrid} canvas.`);
+  createContainer(nrgrid);
 }
 
 createContainer(10);
-const dropdown = document.getElementById("nrgrid");
-dropdown.onchange = myfunc;
