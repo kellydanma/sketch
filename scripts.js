@@ -1,5 +1,19 @@
-const dropdown = (document.getElementById("nrgrid").onchange = handleDropdown);
 const removeElements = (nodes) => [...nodes].forEach((n) => n.remove());
+
+const defaultContainer = createContainer(10);
+const dropdown = (document.getElementById("nrgrid").onchange = handleDropdown);
+const resetButton = (document.querySelector("button").onclick = handleReset);
+
+function handleDropdown() {
+  const nrgrid = this.value;
+  console.log(`Displaying an ${nrgrid} by ${nrgrid} canvas.`);
+  createContainer(nrgrid);
+}
+
+function handleReset() {
+  console.log(`Resetting to a 10 by 10 canvas.`);
+  createContainer(10);
+}
 
 function handleHover() {
   const grids = document.getElementsByClassName("grid");
@@ -44,11 +58,3 @@ function createContainer(nrGrid) {
   }
   handleHover();
 }
-
-function handleDropdown() {
-  const nrgrid = this.value;
-  console.log(`Displaying an ${nrgrid} by ${nrgrid} canvas.`);
-  createContainer(nrgrid);
-}
-
-createContainer(10);
