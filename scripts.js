@@ -44,4 +44,10 @@ function createContainer(nrGrid) {
   handleHover();
 }
 
+function myfunc() {
+  console.log("hello");
+}
+
 createContainer(10);
+const dropdown = document.getElementById("nrgrid");
+dropdown.onchange = myfunc;
