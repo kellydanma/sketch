@@ -3,14 +3,15 @@ function createGrid(id, container, width) {
   grid.className = "grid";
   grid.id = id.toString();
   grid.style.backgroundColor = "black";
+  grid.style.width = width;
   grid.style.height = width;
   container.appendChild(grid);
 }
 
-function createContainer() {
+function createContainer(nrGrid) {
   const container = document.querySelector(".container");
-  const width = ((container.offsetWidth - 20) / 10).toString() + "px";
-  for (let i = 0; i < 100; i++) {
+  const width = ((container.offsetWidth - 20) / nrGrid).toString() + "px";
+  for (let i = 0; i < nrGrid ** 2; i++) {
     createGrid(i, container, width);
   }
 }
@@ -34,5 +35,5 @@ function handleHover() {
   });
 }
 
-createContainer();
+createContainer(10);
 handleHover();
